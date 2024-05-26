@@ -1,5 +1,5 @@
 const L = function() {
-  const s = ":", v = /[0-9]{2}\:[0-5][0-9]/, h = /[0-9]{1,2}\:[0-9]{1,2}/, S = "input.time-input";
+  const s = ":", v = /[0-9]{2}:[0-5][0-9]/, h = /[0-9]{1,2}:[0-9]{1,2}/, S = "input.time-input";
   let c = "", u = "", l = !1, a = !1;
   document.querySelectorAll(S).forEach((e) => {
     const t = e;
