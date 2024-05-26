@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "kanats007",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.3.0"
+  }
 }
