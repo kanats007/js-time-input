@@ -2,9 +2,17 @@
   "name": "time-input",
   "version": "1.0.0",
   "description": "add `hh:mm`format to input element.",
-  "main": "index.js",
+  "type": "module",
+  "files": ["dist"],
+  "main": "dist/bundle.js",
+  "exports": {
+    ".": {
+      "import": "./dist/bundle.js"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
     "lint": "eslint ./src/",
     "format": "prettier --write ./src/"
   },
