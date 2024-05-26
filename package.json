@@ -1,5 +1,5 @@
 {
-  "name": "time-input",
+  "name": "js-time-input",
   "version": "1.0.0",
   "description": "add `hh:mm`format to input element.",
   "type": "module",
