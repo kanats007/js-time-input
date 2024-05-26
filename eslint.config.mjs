@@ -4,6 +4,7 @@ import tseslint from "typescript-eslint";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 
+/** @see https://typescript-eslint.io/getting-started */
 export default [
   {languageOptions: { globals: globals.browser }},
   pluginJs.configs.recommended,
@@ -13,6 +14,6 @@ export default [
       "no-console": "warn",
     }
   },
-  // https://github.com/prettier/eslint-config-prettier?tab=readme-ov-file#installation
+  /** @see https://github.com/prettier/eslint-config-prettier?tab=readme-ov-file#installation */
   eslintConfigPrettier,
 ];
