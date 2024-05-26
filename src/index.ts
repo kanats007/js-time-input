@@ -7,7 +7,7 @@ export default (function () {
   // 最大時間数の正規表現
   const MAX_HOUR_FORMATE_REGEXP = /[0-9]{2}/;
   // 時間入力要素の対象クラス名
-  const TARGET_CLASS_NAME = 'input.time-input';
+  const TARGET_CLASS_NAME = 'input.time-inputter';
   // 入力前の値補完用（時間）
   let previousHours = '';
   // 入力前の値補完用（分）
