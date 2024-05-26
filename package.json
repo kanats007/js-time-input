@@ -1,0 +1,22 @@
+{
+  "name": "time-input",
+  "version": "1.0.0",
+  "description": "add `hh:mm`format to input element.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./src/",
+    "format": "prettier --write ./src/"
+  },
+  "keywords": [],
+  "author": "kanats007",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.10.0"
+  }
+}
