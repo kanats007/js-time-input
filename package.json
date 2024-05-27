@@ -1,6 +1,6 @@
 {
   "name": "time-inputter",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "add `hh:mm`format to input element.",
   "type": "module",
   "files": [
