@@ -1,15 +1,15 @@
 {
   "name": "time-inputter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "add `hh:mm`format to input element.",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/time-inputter.min.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/time-inputter.min.js"
     }
   },
