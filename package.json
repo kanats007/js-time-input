@@ -6,10 +6,10 @@
   "files": [
     "dist"
   ],
-  "main": "dist/bundle.js",
+  "main": "dist/time-inputter.min.js",
   "exports": {
     ".": {
-      "import": "./dist/bundle.js"
+      "import": "./dist/time-inputter.min.js"
     }
   },
   "scripts": {
