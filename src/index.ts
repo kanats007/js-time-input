@@ -1,3 +1,10 @@
+/**
+ * Time Inputter
+ * @description add `hh:mm`format to input element.
+ * @version __RELEASE_VERSION__
+ * @author kanats007
+ * @license "MIT"
+ */
 export default (function () {
   const COLON = ':';
   // HH:MMフォーマットの正規表現
