@@ -1,11 +1,20 @@
+/**
+ * Time Inputter
+ * @description add `hh:mm`format to input element.
+ * @version __RELEASE_VERSION__
+ * @author kanats007
+ * @license "MIT"
+ */
 export default (function () {
   const COLON = ':';
   // HH:MMフォーマットの正規表現
   const TIME_FORMATE_REGEXP = /[0-9]{2}:[0-5][0-9]/;
   // 入力値チェック用の正規表現
   const INPUT_CHECK_REGEXP = /[0-9]{1,2}:[0-9]{1,2}/;
+  // 最大時間数の正規表現
+  const MAX_HOUR_FORMATE_REGEXP = /[0-9]{2}/;
   // 時間入力要素の対象クラス名
-  const TARGET_CLASS_NAME = 'input.time-input';
+  const TARGET_CLASS_NAME = 'input.time-inputter';
   // 入力前の値補完用（時間）
   let previousHours = '';
   // 入力前の値補完用（分）
@@ -41,6 +50,18 @@ export default (function () {
    */
   function checkDefaultValue(defaultValue: string) {
     return TIME_FORMATE_REGEXP.test(toHalfWidth(defaultValue));
+  }
+
+  /**
+   * 最大時間数をチェックする
+   * @param {string|null} maxHour
+   * @returns {boolean}
+   */
+  function checkMaxHour(maxHour: string | null) {
+    if (maxHour === null) {
+      return false;
+    }
+    return MAX_HOUR_FORMATE_REGEXP.test(toHalfWidth(maxHour));
   }
 
   /**
@@ -126,7 +147,9 @@ export default (function () {
       return;
     }
 
-    const maxHour = activeElement.getAttribute('maxHour') ?? '99';
+    const maxHour = checkMaxHour(activeElement.getAttribute('maxHour'))
+      ? activeElement.getAttribute('maxHour')
+      : '99';
     const { inputHours, inputMinutes } = getHourAndMinute(inputValues);
     const colonIndex = inputValues.search(COLON);
     const selectionStart = activeElement.selectionStart ?? 0;

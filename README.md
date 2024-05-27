@@ -3,16 +3,27 @@
 add `hh:mm`format to input element.
 
 ### how to use
-1. npm install
+1. install 
 ```
-npm install 
+npm install time-inputter
 ```
 
-2. add import
+import and execute on your app
+```js
+import TimeInputter from 'time-inputter';
+TimeInputter;
+```
 
-3. add `time-input` to className
+or download `dist/time-inputter.min.js` file and add script directly
 ```html
-<input class="time-input" value="09:00" />
+<script type="module" src="time-inputter.min.js"></script>
+</body>
+```
+
+
+2. add `time-inputter` to className
+```html
+<input class="time-inputter" value="09:00" />
 ```
 
 
