@@ -17,7 +17,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint ./src/",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "kanats007",
@@ -30,6 +31,8 @@
     "@eslint/js": "^9.3.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.10.0",
