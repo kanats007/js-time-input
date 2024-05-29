@@ -19,7 +19,7 @@ export default [
   ...tseslint.configs.recommended,
   {
     rules: {
-      'no-console': 'warn',
+      'no-console': 'error',
     },
   },
   /** @see https://github.com/prettier/eslint-config-prettier?tab=readme-ov-file#installation */
