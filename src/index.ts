@@ -273,6 +273,3 @@ export default (function () {
     isChangingMinuteJustBefore = false;
   }
 })();
-
-// test
-console.log('ss');
