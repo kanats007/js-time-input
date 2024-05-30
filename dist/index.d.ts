@@ -5,5 +5,4 @@
  * @author kanats007
  * @license "MIT"
  */
-declare const _default: void;
-export default _default;
+export declare function timeInputter(): void;

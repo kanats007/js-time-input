@@ -5,7 +5,7 @@
  * @author kanats007
  * @license "MIT"
  */
-export default (function () {
+export function timeInputter() {
   const COLON = ':';
   // HH:MMフォーマットの正規表現
   const TIME_FORMATE_REGEXP = /[0-9]{2}:[0-5][0-9]/;
@@ -272,4 +272,4 @@ export default (function () {
     isChangingHourJustBefore = false;
     isChangingMinuteJustBefore = false;
   }
-})();
+}

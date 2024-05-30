@@ -15,14 +15,17 @@ npm install time-inputter
 import and execute on your app
 
 ```js
-import TimeInputter from 'time-inputter';
-TimeInputter;
+import { timeInputter } from 'time-inputter';
+timeInputter();
 ```
 
 or download `dist/time-inputter.min.js` file and add script directly
 
 ```html
-<script type="module" src="time-inputter.min.js"></script>
+<script type="module">
+  import { timeInputter } from '.time-inputter.min.js';
+  timeInputter();
+</script>
 </body>
 ```
 
