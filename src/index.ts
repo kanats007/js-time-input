@@ -36,6 +36,11 @@ export function timeInputter() {
       timeInput.type = 'text';
     }
 
+    const maxHour = timeInput.getAttribute('maxHour');
+    if (maxHour !== null) {
+      timeInput.setAttribute('maxHour', toHalfWidth(maxHour));
+    }
+
     timeInput.addEventListener('input', inputEvent);
     timeInput.addEventListener('focus', focusEvent);
     timeInput.addEventListener('click', clickEvent);
