@@ -192,15 +192,15 @@ export function timeInputter() {
 
         activeElement.setSelectionRange(3, 5);
       } else {
+        const hh = Number(maxHour) < Number(inputHours) ? '00' : inputHours;
         const mm =
           inputMinutes.length === 2
             ? inputMinutes
             : previousMinutes + inputMinutes;
-        activeElement.value =
-          inputHours + COLON + (60 <= Number(mm) ? '00' : mm);
+        activeElement.value = hh + COLON + (60 <= Number(mm) ? '00' : mm);
 
         isChangingMinuteJustBefore = false;
-        previousHours = inputHours;
+        previousHours = hh;
         previousMinutes = mm;
 
         activeElement.setSelectionRange(0, 2);
