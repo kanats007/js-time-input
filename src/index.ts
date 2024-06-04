@@ -75,7 +75,7 @@ export function timeInputter() {
 
   /**
    * 右矢印と左矢印キーを押下時のイベントハンドラ
-   * @param {*} event
+   * @param {Event} event
    * @returns
    */
   function keydownEvent(event: KeyboardEvent) {
@@ -90,7 +90,7 @@ export function timeInputter() {
 
     // TODO: ArrowUpでカウントアップ、ArrowDownで１カウントダウン
 
-    const activeElement = event.target as HTMLInputElement | null;
+    const activeElement = getHtmlInputElement(event);
     if (activeElement === null) return;
     const selectionStart = activeElement.selectionStart ?? 0;
 
@@ -107,11 +107,11 @@ export function timeInputter() {
 
   /**
    * クリック時のイベントハンドラ
-   * @param {*} event
+   * @param {Event} event
    * @returns
    */
   function clickEvent(event: Event) {
-    const activeElement = event.target as HTMLInputElement | null;
+    const activeElement = getHtmlInputElement(event);
     if (activeElement === null) return;
     const selectionStart = activeElement.selectionStart ?? 0;
 
@@ -133,9 +133,11 @@ export function timeInputter() {
 
   /**
    * 入力要素に変更があった場合のイベントハンドラ
+   * @param {Event} event
+   * @returns
    */
   function inputEvent(event: Event) {
-    const activeElement = event.target as HTMLInputElement | null;
+    const activeElement = getHtmlInputElement(event);
     if (activeElement === null) return;
     const inputValues = toHalfWidth(activeElement.value);
     if (!isValidInput(inputValues)) {
@@ -227,9 +229,11 @@ export function timeInputter() {
 
   /**
    * 入力要素にフォーカスが当たった場合のイベントハンドラ
+   * @param {Event} event
+   * @returns
    */
   function focusEvent(event: Event) {
-    const activeElement = event.target as HTMLInputElement | null;
+    const activeElement = getHtmlInputElement(event);
     if (activeElement === null) return;
     activeElement.setSelectionRange(0, 2);
 
@@ -275,5 +279,18 @@ export function timeInputter() {
     // 初期化
     isChangingHourJustBefore = false;
     isChangingMinuteJustBefore = false;
+  }
+
+  /**
+   * HTMLInputElementを取得する
+   * @param {Event} event
+   * @returns
+   */
+  function getHtmlInputElement(event: Event): HTMLInputElement | null {
+    if (!(event.target instanceof HTMLInputElement)) {
+      return null;
+    }
+
+    return event.target;
   }
 }
