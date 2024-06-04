@@ -48,7 +48,7 @@ export function timeInputter() {
    * @param {string} defaultValue
    * @returns {boolean}
    */
-  function checkDefaultValue(defaultValue: string) {
+  function checkDefaultValue(defaultValue: string): boolean {
     return TIME_FORMATE_REGEXP.test(toHalfWidth(defaultValue));
   }
 
@@ -57,7 +57,7 @@ export function timeInputter() {
    * @param {string|null} maxHour
    * @returns {boolean}
    */
-  function checkMaxHour(maxHour: string | null) {
+  function checkMaxHour(maxHour: string | null): boolean {
     if (maxHour === null) {
       return false;
     }
@@ -69,13 +69,13 @@ export function timeInputter() {
    * @param {string} type
    * @returns {boolean}
    */
-  function checkType(type: string | null) {
+  function checkType(type: string | null): boolean {
     return type === 'text';
   }
 
   /**
    * 右矢印と左矢印キーを押下時のイベントハンドラ
-   * @param {*} event
+   * @param {Event} event
    * @returns
    */
   function keydownEvent(event: KeyboardEvent) {
@@ -90,7 +90,7 @@ export function timeInputter() {
 
     // TODO: ArrowUpでカウントアップ、ArrowDownで１カウントダウン
 
-    const activeElement = event.target as HTMLInputElement | null;
+    const activeElement = getHtmlInputElement(event);
     if (activeElement === null) return;
     const selectionStart = activeElement.selectionStart ?? 0;
 
@@ -107,11 +107,11 @@ export function timeInputter() {
 
   /**
    * クリック時のイベントハンドラ
-   * @param {*} event
+   * @param {Event} event
    * @returns
    */
   function clickEvent(event: Event) {
-    const activeElement = event.target as HTMLInputElement | null;
+    const activeElement = getHtmlInputElement(event);
     if (activeElement === null) return;
     const selectionStart = activeElement.selectionStart ?? 0;
 
@@ -133,9 +133,11 @@ export function timeInputter() {
 
   /**
    * 入力要素に変更があった場合のイベントハンドラ
+   * @param {Event} event
+   * @returns
    */
   function inputEvent(event: Event) {
-    const activeElement = event.target as HTMLInputElement | null;
+    const activeElement = getHtmlInputElement(event);
     if (activeElement === null) return;
     const inputValues = toHalfWidth(activeElement.value);
     if (!isValidInput(inputValues)) {
@@ -211,7 +213,7 @@ export function timeInputter() {
    * @param {string} inputValues
    * @returns {boolean}
    */
-  function isValidInput(inputValues: string) {
+  function isValidInput(inputValues: string): boolean {
     // 入力値が５桁以上の場合が前回の入力値にする
     if (5 < inputValues.length) {
       return false;
@@ -227,9 +229,11 @@ export function timeInputter() {
 
   /**
    * 入力要素にフォーカスが当たった場合のイベントハンドラ
+   * @param {Event} event
+   * @returns
    */
   function focusEvent(event: Event) {
-    const activeElement = event.target as HTMLInputElement | null;
+    const activeElement = getHtmlInputElement(event);
     if (activeElement === null) return;
     activeElement.setSelectionRange(0, 2);
 
@@ -241,7 +245,10 @@ export function timeInputter() {
    * @param {string} inputValue
    * @returns {{inputHours: string, inputMinutes: string}}
    */
-  function getHourAndMinute(inputValue: string) {
+  function getHourAndMinute(inputValue: string): {
+    inputHours: string;
+    inputMinutes: string;
+  } {
     const colonIndex = inputValue.search(COLON);
     const inputHours = inputValue.slice(0, colonIndex);
     const inputMinutes = inputValue.slice(colonIndex + 1);
@@ -255,16 +262,15 @@ export function timeInputter() {
    * @param {string} str
    * @returns {string}
    */
-  function toHalfWidth(str: string) {
-    str = str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
+  function toHalfWidth(str: string): string {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function (s) {
       return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
     });
-    return str;
   }
 
   /**
    * 初期化する
-   * @param {*} activeElement
+   * @param {HTMLInputElement} activeElement
    */
   function init(activeElement: HTMLInputElement) {
     // フォーカスが当たった要素の入力値を取っておく
@@ -275,5 +281,18 @@ export function timeInputter() {
     // 初期化
     isChangingHourJustBefore = false;
     isChangingMinuteJustBefore = false;
+  }
+
+  /**
+   * HTMLInputElementを取得する
+   * @param {Event} event
+   * @returns
+   */
+  function getHtmlInputElement(event: Event): HTMLInputElement | null {
+    if (!(event.target instanceof HTMLInputElement)) {
+      return null;
+    }
+
+    return event.target;
   }
 }
