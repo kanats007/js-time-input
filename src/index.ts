@@ -233,7 +233,6 @@ export function timeInputter() {
     activeElement.setSelectionRange(0, 2);
 
     init(activeElement);
-    activeElement.setSelectionRange(0, 2);
   }
 
   /**
