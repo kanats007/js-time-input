@@ -90,7 +90,8 @@ export function timeInputter() {
 
     // TODO: ArrowUpでカウントアップ、ArrowDownで１カウントダウン
 
-    const activeElement = document.activeElement as HTMLInputElement;
+    const activeElement = event.target as HTMLInputElement | null;
+    if (activeElement === null) return;
     const selectionStart = activeElement.selectionStart ?? 0;
 
     if (selectionStart <= 2) {
@@ -110,7 +111,8 @@ export function timeInputter() {
    * @returns
    */
   function clickEvent(event: Event) {
-    const activeElement = document.activeElement as HTMLInputElement;
+    const activeElement = event.target as HTMLInputElement | null;
+    if (activeElement === null) return;
     const selectionStart = activeElement.selectionStart ?? 0;
 
     // カーソルの位置がコロンより前なら前半２桁を範囲選択
@@ -132,8 +134,9 @@ export function timeInputter() {
   /**
    * 入力要素に変更があった場合のイベントハンドラ
    */
-  function inputEvent() {
-    const activeElement = document.activeElement as HTMLInputElement;
+  function inputEvent(event: Event) {
+    const activeElement = event.target as HTMLInputElement | null;
+    if (activeElement === null) return;
     const inputValues = toHalfWidth(activeElement.value);
     if (!isValidInput(inputValues)) {
       activeElement.value =
@@ -225,8 +228,9 @@ export function timeInputter() {
   /**
    * 入力要素にフォーカスが当たった場合のイベントハンドラ
    */
-  function focusEvent() {
-    const activeElement = document.activeElement as HTMLInputElement;
+  function focusEvent(event: Event) {
+    const activeElement = event.target as HTMLInputElement | null;
+    if (activeElement === null) return;
     activeElement.setSelectionRange(0, 2);
 
     init(activeElement);
