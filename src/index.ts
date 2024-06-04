@@ -149,6 +149,7 @@ export function timeInputter() {
           : previousMinutes);
 
       activeElement.setSelectionRange(0, 2);
+      init(activeElement);
       return;
     }
 
@@ -174,11 +175,8 @@ export function timeInputter() {
         activeElement.value =
           (Number(maxHour) < Number(hh) ? '00' : hh) + COLON + inputMinutes;
 
-        isChangingHourJustBefore = false;
-        previousHours = hh;
-        previousMinutes = inputMinutes;
-
         activeElement.setSelectionRange(3, 5);
+        init(activeElement);
       }
     }
 
@@ -199,11 +197,8 @@ export function timeInputter() {
             : previousMinutes + inputMinutes;
         activeElement.value = hh + COLON + (60 <= Number(mm) ? '00' : mm);
 
-        isChangingMinuteJustBefore = false;
-        previousHours = hh;
-        previousMinutes = mm;
-
         activeElement.setSelectionRange(0, 2);
+        init(activeElement);
       }
     }
   }
@@ -238,6 +233,7 @@ export function timeInputter() {
     activeElement.setSelectionRange(0, 2);
 
     init(activeElement);
+    activeElement.setSelectionRange(0, 2);
   }
 
   /**
