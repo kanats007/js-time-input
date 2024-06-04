@@ -267,7 +267,7 @@ export function timeInputter() {
 
   /**
    * 初期化する
-   * @param {*} activeElement
+   * @param {HTMLInputElement} activeElement
    */
   function init(activeElement: HTMLInputElement) {
     // フォーカスが当たった要素の入力値を取っておく
