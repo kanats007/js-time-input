@@ -149,6 +149,7 @@ export function timeInputter() {
           : previousMinutes);
 
       activeElement.setSelectionRange(0, 2);
+      init(activeElement);
       return;
     }
 
@@ -174,11 +175,8 @@ export function timeInputter() {
         activeElement.value =
           (Number(maxHour) < Number(hh) ? '00' : hh) + COLON + inputMinutes;
 
-        isChangingHourJustBefore = false;
-        previousHours = hh;
-        previousMinutes = inputMinutes;
-
         activeElement.setSelectionRange(3, 5);
+        init(activeElement);
       }
     }
 
@@ -192,18 +190,15 @@ export function timeInputter() {
 
         activeElement.setSelectionRange(3, 5);
       } else {
+        const hh = Number(maxHour) < Number(inputHours) ? '00' : inputHours;
         const mm =
           inputMinutes.length === 2
             ? inputMinutes
             : previousMinutes + inputMinutes;
-        activeElement.value =
-          inputHours + COLON + (60 <= Number(mm) ? '00' : mm);
-
-        isChangingMinuteJustBefore = false;
-        previousHours = inputHours;
-        previousMinutes = mm;
+        activeElement.value = hh + COLON + (60 <= Number(mm) ? '00' : mm);
 
         activeElement.setSelectionRange(0, 2);
+        init(activeElement);
       }
     }
   }
